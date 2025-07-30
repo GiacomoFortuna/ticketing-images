@@ -7,7 +7,7 @@ apk add --no-cache \
 
 WORKDIR /app
 
-COPY ../../frontend  ./
+COPY ./source/  ./
 
 RUN npm ci --only=production --no-audit --no-fund
 RUN rm -rf .git \
