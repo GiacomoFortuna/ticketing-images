@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY ./source/  ./
 
-RUN npm ci --only=production --no-audit --no-fund
+RUN npm ci --no-audit --no-fund
 RUN rm -rf .git \
     && npm run build \
     && rm -rf node_modules src public *.json *.config.* \
