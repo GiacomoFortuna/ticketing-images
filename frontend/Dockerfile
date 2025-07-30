@@ -1,4 +1,4 @@
-FROM node:20-alpine AS build
+FROM node:22-slim AS build
 
 RUN apk upgrade --no-cache && \ 
 apk add --no-cache \
