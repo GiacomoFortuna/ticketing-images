@@ -11,7 +11,6 @@ COPY ./source/  ./
 
 RUN npm ci --only=production --no-audit --no-fund
 RUN rm -rf .git \
-    && mv .env.production .env \
     && npm run build \
     && rm -rf node_modules src public *.json *.config.* \
     && npm cache clean --force
