@@ -11,7 +11,7 @@ WORKDIR /app
 COPY ./source/ ./
 
 # Installa le dipendenze (dev incluse, per la build)
-RUN npm ci --no-audit --no-fund
+RUN npm install --no-audit --no-fund
 
 # Compila e rimuove tutto il superfluo
 RUN rm -rf .git && \
