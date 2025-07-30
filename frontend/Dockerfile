@@ -1,19 +1,23 @@
 FROM node:22-slim AS build
 
-RUN apk upgrade --no-cache && \ 
-apk add --no-cache \
-    git \
-    && rm -rf /var/cache/apk/*
+# Aggiorna i pacchetti e installa git
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends git && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY ./source/  ./
+# Copia i file sorgenti
+COPY ./source/ ./
 
+# Installa le dipendenze (dev incluse, per la build)
 RUN npm ci --no-audit --no-fund
-RUN rm -rf .git \
-    && npm run build \
-    && rm -rf node_modules src public *.json *.config.* \
-    && npm cache clean --force
+
+# Compila e rimuove tutto il superfluo
+RUN rm -rf .git && \
+    npm run build && \
+    rm -rf node_modules src public *.json *.config.* && \
+    npm cache clean --force
 
 
 FROM nginx:alpine
