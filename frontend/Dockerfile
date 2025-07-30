@@ -1,4 +1,4 @@
-FROM node:22-slim AS build
+FROM node:20-slim AS build
 
 # Aggiorna i pacchetti e installa git
 RUN apt-get update && \
