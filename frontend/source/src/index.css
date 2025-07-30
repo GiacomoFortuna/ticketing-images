@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Questo file CSS serve per abilitare Tailwind nel progetto.
+   Le tre direttive sopra permettono di usare tutte le classi di Tailwind
+   per la stilizzazione rapida dei componenti React. */
+
+
+
+
